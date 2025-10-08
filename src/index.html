@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24GameSolver</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <form id="game-form">
+        <p id="instruction">This is the 24 puzzle solver that will suggest you  
+            all the possible solutions to the 24 puzzle, created by
+            the 12<sup>th</sup> grade student 
+            <span class="instruction-span">Kasipitkun Chaikulsereewat</span>.
+            the 24 puzzle is a mathematical game in which the objective is to 
+            find a way to manipulate four integers so that the end result is 24.
+            the puzzle suggests using only four basics arithmetic operations 
+            <span class="instruction-span">(addition +, subtraction -, 
+            multiplication *, and division /)</span> and <span class="instruction-span">parentheses groupings</span>. this solver 
+            will take 4 numbers as input and will output all the possible solutions to the 
+            24 puzzle. However, there's a catch, this solver will output the solutions that 
+            have the absolute value of 24. Meaning that, if the expression results in -24, 
+            the solver will still count it as a valid solution. So, if you want to find the 
+            solutions that result in exactly 24, you must take the absolute value of the 
+            expressions, or switch the order of the inputs in the input session.
+            </p>
+        <div class="section-container">
+            <div class="section">
+                <p id="enterNum">Enter 4 numbers in order</p>
+                <input class="numInput" type="number" id="input1" placeholder="Enter first number" required>
+                <input class="numInput" type="number" id="input2" placeholder="Enter second number" required>
+                <input class="numInput" type="number" id="input3" placeholder="Enter third number" required>
+                <input class="numInput" type="number" id="input4" placeholder="Enter fourth number" required>
+                <button class="button" type="submit" id="find_solution">Find Solution</button>
+                <button class="button" type="reset" id="reset-button">Reset</button>
+            </div>
+            <div class="section" id="solution-section">
+                <h2>Solution:</h2>
+                <div id="checkbox-container">
+                    <input type="checkbox" id="showAll" name="Show All Solutions.">
+                    <label for="showAll">Show All Solutions.</label><br>
+                </div>
+                <p id ="caution">*You must take the <span class="abs">absolute value</span> of some expressions.*</p><br>
+                <p id="solution-text"></p>
+            </div>
+        </div>
+    </form>
+    <script src="game.js"></script>
+</body>
+</html>
