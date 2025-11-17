@@ -3,14 +3,24 @@
 const solutionText = document.getElementById('solution-text');
 const cautionText = document.getElementById('caution');
 
-function sort(a, b, c, d) {
+function sortdes(a, b, c, d) {
     const arr = [a, b, c, d];
     arr.sort((x, y) => y - x);
     return arr;
 }
 
-function findSolution(a, b, c, d) {
+function sortas(a, b, c, d) {
+    const arr = [a, b, c, d];
+    arr.sort((x, y) => x - y);
+    return arr;
+}
+
+function findSolution(arr) {
     const showAllCheckbox = document.getElementById('showAll');
+    const a = arr[0];
+    const b = arr[1];
+    const c = arr[2];
+    const d = arr[3];
     const ops = ['+', '-', '*', '/'];
     let cases = [];
     for (let i = 0; i < ops.length; i++) {
@@ -28,6 +38,18 @@ function findSolution(a, b, c, d) {
                 cases.push(`${b} ${ops[i]} ((${c} ${ops[j]} ${a}) ${ops[k]} ${d})`);
                 cases.push(`${b} ${ops[i]} (${c} ${ops[j]} (${a} ${ops[k]} ${d}))`);
 
+                cases.push(`((${b} ${ops[i]} ${a}) ${ops[j]} ${d}) ${ops[k]} ${c}`);
+                cases.push(`(${b} ${ops[i]} (${a} ${ops[j]} ${d})) ${ops[k]} ${c}`);
+                cases.push(`(${b} ${ops[i]} ${a}) ${ops[j]} (${d} ${ops[k]} ${c})`);
+                cases.push(`${b} ${ops[i]} ((${a} ${ops[j]} ${d}) ${ops[k]} ${c})`);
+                cases.push(`${b} ${ops[i]} (${a} ${ops[j]} (${d} ${ops[k]} ${c}))`);
+
+                cases.push(`((${b} ${ops[i]} ${a}) ${ops[j]} ${c}) ${ops[k]} ${d}`);
+                cases.push(`(${b} ${ops[i]} (${a} ${ops[j]} ${c})) ${ops[k]} ${d}`);
+                cases.push(`(${b} ${ops[i]} ${a}) ${ops[j]} (${c} ${ops[k]} ${d})`);
+                cases.push(`${b} ${ops[i]} ((${a} ${ops[j]} ${c}) ${ops[k]} ${d})`);
+                cases.push(`${b} ${ops[i]} (${a} ${ops[j]} (${c} ${ops[k]} ${d}))`);
+
                 cases.push(`((${a} ${ops[i]} ${c}) ${ops[j]} ${b}) ${ops[k]} ${d}`);
                 cases.push(`(${a} ${ops[i]} (${c} ${ops[j]} ${b})) ${ops[k]} ${d}`);
                 cases.push(`(${a} ${ops[i]} ${c}) ${ops[j]} (${b} ${ops[k]} ${d})`);
@@ -40,6 +62,24 @@ function findSolution(a, b, c, d) {
                 cases.push(`${c} ${ops[i]} ((${b} ${ops[j]} ${a}) ${ops[k]} ${d})`);
                 cases.push(`${c} ${ops[i]} (${b} ${ops[j]} (${a} ${ops[k]} ${d}))`);
 
+                cases.push(`((${c} ${ops[i]} ${b}) ${ops[j]} ${d}) ${ops[k]} ${a}`);
+                cases.push(`(${c} ${ops[i]} (${b} ${ops[j]} ${d})) ${ops[k]} ${a}`);
+                cases.push(`(${c} ${ops[i]} ${b}) ${ops[j]} (${d} ${ops[k]} ${a})`);
+                cases.push(`${c} ${ops[i]} ((${b} ${ops[j]} ${d}) ${ops[k]} ${a})`);
+                cases.push(`${c} ${ops[i]} (${b} ${ops[j]} (${d} ${ops[k]} ${a}))`);
+
+                cases.push(`((${c} ${ops[i]} ${a}) ${ops[j]} ${b}) ${ops[k]} ${d}`);
+                cases.push(`(${c} ${ops[i]} (${a} ${ops[j]} ${b})) ${ops[k]} ${d}`);
+                cases.push(`(${c} ${ops[i]} ${a}) ${ops[j]} (${b} ${ops[k]} ${d})`);
+                cases.push(`${c} ${ops[i]} ((${a} ${ops[j]} ${b}) ${ops[k]} ${d})`);
+                cases.push(`${c} ${ops[i]} (${a} ${ops[j]} (${b} ${ops[k]} ${d}))`);
+
+                cases.push(`((${c} ${ops[i]} ${a}) ${ops[j]} ${d}) ${ops[k]} ${b}`);
+                cases.push(`(${c} ${ops[i]} (${a} ${ops[j]} ${d})) ${ops[k]} ${b}`);
+                cases.push(`(${c} ${ops[i]} ${a}) ${ops[j]} (${d} ${ops[k]} ${b})`);
+                cases.push(`${c} ${ops[i]} ((${a} ${ops[j]} ${d}) ${ops[k]} ${b})`);
+                cases.push(`${c} ${ops[i]} (${a} ${ops[j]} (${d} ${ops[k]} ${b}))`);
+
                 cases.push(`((${a} ${ops[i]} ${b}) ${ops[j]} ${d}) ${ops[k]} ${c}`);
                 cases.push(`(${a} ${ops[i]} (${b} ${ops[j]} ${d})) ${ops[k]} ${c}`);
                 cases.push(`(${a} ${ops[i]} ${b}) ${ops[j]} (${d} ${ops[k]} ${c})`);
@@ -51,6 +91,30 @@ function findSolution(a, b, c, d) {
                 cases.push(`(${a} ${ops[i]} ${c}) ${ops[j]} (${d} ${ops[k]} ${b})`);
                 cases.push(`${a} ${ops[i]} ((${c} ${ops[j]} ${d}) ${ops[k]} ${b})`);
                 cases.push(`${a} ${ops[i]} (${c} ${ops[j]} (${d} ${ops[k]} ${b}))`);
+
+                cases.push(`((${d} ${ops[i]} ${a}) ${ops[j]} ${c}) ${ops[k]} ${b}`);
+                cases.push(`(${d} ${ops[i]} (${a} ${ops[j]} ${c})) ${ops[k]} ${b}`);
+                cases.push(`(${d} ${ops[i]} ${a}) ${ops[j]} (${c} ${ops[k]} ${b})`);
+                cases.push(`${d} ${ops[i]} ((${a} ${ops[j]} ${c}) ${ops[k]} ${b})`);
+                cases.push(`${d} ${ops[i]} (${a} ${ops[j]} (${c} ${ops[k]} ${b}))`);
+
+                cases.push(`((${d} ${ops[i]} ${a}) ${ops[j]} ${b}) ${ops[k]} ${c}`);
+                cases.push(`(${d} ${ops[i]} (${a} ${ops[j]} ${b})) ${ops[k]} ${c}`);
+                cases.push(`(${d} ${ops[i]} ${a}) ${ops[j]} (${b} ${ops[k]} ${c})`);
+                cases.push(`${d} ${ops[i]} ((${a} ${ops[j]} ${b}) ${ops[k]} ${c})`);
+                cases.push(`${d} ${ops[i]} (${a} ${ops[j]} (${b} ${ops[k]} ${c}))`);
+
+                cases.push(`((${d} ${ops[i]} ${a}) ${ops[j]} ${c}) ${ops[k]} ${b}`);
+                cases.push(`(${d} ${ops[i]} (${a} ${ops[j]} ${c})) ${ops[k]} ${b}`);
+                cases.push(`(${d} ${ops[i]} ${a}) ${ops[j]} (${c} ${ops[k]} ${b})`);
+                cases.push(`${d} ${ops[i]} ((${a} ${ops[j]} ${c}) ${ops[k]} ${b})`);
+                cases.push(`${d} ${ops[i]} (${a} ${ops[j]} (${c} ${ops[k]} ${b}))`);
+
+                cases.push(`((${d} ${ops[i]} ${b}) ${ops[j]} ${c}) ${ops[k]} ${a}`);
+                cases.push(`(${d} ${ops[i]} (${b} ${ops[j]} ${c})) ${ops[k]} ${a}`);
+                cases.push(`(${d} ${ops[i]} ${b}) ${ops[j]} (${c} ${ops[k]} ${a})`);
+                cases.push(`${d} ${ops[i]} ((${b} ${ops[j]} ${c}) ${ops[k]} ${a})`);
+                cases.push(`${d} ${ops[i]} (${b} ${ops[j]} (${c} ${ops[k]} ${a}))`);
             }
         }
     }
@@ -59,13 +123,6 @@ function findSolution(a, b, c, d) {
         try {
             if (eval(cases[i]) === 24) {
                 solutions.push(cases[i]);
-                if (!showAllCheckbox.checked) {
-                    displaySolution(solutions[0]);
-                    return;
-                }
-            } else if (Math.abs(eval(cases[i])) === 24){
-                solutions.push(`|${cases[i]}|`);
-                cautionText.style.display = "block";
                 if (!showAllCheckbox.checked) {
                     displaySolution(solutions[0]);
                     return;
@@ -105,9 +162,20 @@ findSolutionButton.onclick = function(event) {
     const num3 = Number(document.getElementById('input3').value);
     const num4 = Number(document.getElementById('input4').value);
     
-    findSolution(...sort(num1, num2, num3, num4));
-}
+    if ([num1, num2, num3, num4].some(n => Number.isNaN(n))) {
+        solutionText.textContent = "Please enter valid numbers in all fields.";
+        return;
+    }
 
+    const numContainer = [
+        [num1, num2, num3, num4],
+        sortdes(num1, num2, num3, num4),
+        sortas(num1, num2, num3, num4)
+    ];
+    for (let i = 0; i < numContainer.length; i++) {
+        findSolution(numContainer[i]);
+    }
+}
 
 const resetButton = document.getElementById('reset-button');
 resetButton.onclick = function() {
